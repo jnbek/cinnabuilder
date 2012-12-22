@@ -97,6 +97,8 @@ sub main {
     #my $str = q!yaourt -Ss cinnamon | grep -v git | /usr/bin/perl -p -i -e 's/^.*\/(.*).+/$1/xs' | /bin/sed -e's/\s.*//'!;
     #my $p = `$str`;
     #my @packages = split(/\n/, $p);
+    #TODO: Compare installed version with AUR version, skip if the same
+    # perl -e'print "True" if "1.6.7-4" gt "1.6.7-5";'
     print
       "Beginning Manual Packages First, These require your input, changes or something to build.\n";
 
