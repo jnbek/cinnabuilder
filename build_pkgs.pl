@@ -21,13 +21,10 @@ sub main {
     }
     my @aur_fail     = qw();
     my $archive_exts = [ 'tar.gz', 'zip', '7z', 'tar.bz2', 'deb', 'part' ];
+    #Removed: cinnamon-applet-recent 
     my @manual_pkgs  = qw(
       cinnamon-applet-windows7-menu
-      cinnamon-applet-recent
       cinnamon-applet-cpufreq
-      cinnamon-theme-odin
-      omg-cinnamon-theme
-      omg-suite
     );
     my @packages = qw(
       muffin-wm
@@ -86,6 +83,9 @@ sub main {
       cinnamon-theme-nadia
       cinnamon-theme-nightlife
       cinnamon-theme-void
+      cinnamon-theme-odin
+      omg-cinnamon-theme
+      omg-suite
       delorean-dark-theme-3.6-g
       gtk-theme-gnome-cupertino
       elegant-brit-gtk3-theme
@@ -93,22 +93,33 @@ sub main {
       orta-gtk3-theme
       gtk-theme-plastiq
       insync
+      hotot-data
+      hotot-gtk3
+      perl-template-alloy
+      perl-cgi-ex
+      rhythmbox-tray-icon
+      rhythmbox-equalizer-git
+      hexchat
     );
-    #my $str = q!yaourt -Ss cinnamon | grep -v git | /usr/bin/perl -p -i -e 's/^.*\/(.*).+/$1/xs' | /bin/sed -e's/\s.*//'!;
-    #my $p = `$str`;
-    #my @packages = split(/\n/, $p);
-    #TODO: Compare installed version with AUR version, skip if the same
-    # perl -e'print "True" if "1.6.7-4" gt "1.6.7-5";'
     print
-      "Beginning Manual Packages First, These require your input, changes or something to build.\n";
+      "Beginning Manual Packages First\n", 
+      "These require your input, changes etc to build.\n";
 
     foreach my $package (@manual_pkgs) {
+        my $current_aur = $self->current_aur($package);
+        my $current_local = $self->current_local($package);
+        print "$package: AUR: $current_aur LOCAL: $current_local\n";
+        next unless (!$current_local || $current_aur gt $current_local);
         my $return = system("/usr/bin/yaourt -S --export $export_dir $package");
         if ( $return != 0 ) {
             push @aur_fail, $package;
         }
     }
     foreach my $package (@packages) {
+        my $current_aur = $self->current_aur($package);
+        my $current_local = $self->current_local($package);
+        print "$package: AUR: $current_aur LOCAL: $current_local\n";
+        next unless (!$current_local || $current_aur gt $current_local);
         my $return = system("/usr/bin/yaourt -S --export $export_dir --noconfirm $package");
         if ( $return != 0 ) {
             push @aur_fail, $package;
@@ -142,7 +153,7 @@ sub current_aur {
 sub current_local {
     my $self    = shift;
     my $pkg     = shift;
-    my $exec    = q#/usr/bin/package-query -Q -f %V#;
+    my $exec    = q#/usr/bin/package-query -Q -f %v#;
     my $version = `$exec $pkg`;
     chomp $version;
     return $version;
