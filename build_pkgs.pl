@@ -20,11 +20,9 @@ sub main {
         }
     }
     my @aur_fail     = qw();
-    my $archive_exts = [ 'tar.gz', 'zip', '7z', 'tar.bz2', 'deb', 'part' ];
     #Removed: cinnamon-applet-recent 
     my @manual_pkgs  = qw(
       cinnamon-applet-windows7-menu
-      cinnamon-applet-cpufreq
     );
     my @packages = qw(
       muffin-wm
@@ -97,9 +95,11 @@ sub main {
       hotot-gtk3
       perl-template-alloy
       perl-cgi-ex
+      qbittorrent
       rhythmbox-tray-icon
       rhythmbox-equalizer-git
       hexchat
+      cinnamon-meta
     );
     print
       "Beginning Manual Packages First\n", 
