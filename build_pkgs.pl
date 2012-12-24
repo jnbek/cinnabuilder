@@ -25,6 +25,9 @@ sub main {
       cinnamon-applet-windows7-menu
     );
     my @packages = qw(
+      disper
+      gpaste-daemon
+      ttf-roboto
       muffin-wm
       nemo-fm
       cinnamon
