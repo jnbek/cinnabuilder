@@ -35,7 +35,6 @@ sub main {
       cinnamon-applet-better-settings
       cinnamon-applet-brightness
       cinnamon-applet-classicmenu
-      cinnamon-applet-cpufreq
       cinnamon-applet-display-switcher
       cinnamon-applet-gpaste
       cinnamon-applet-hardware-monitor
@@ -75,7 +74,6 @@ sub main {
       cinnamon-theme-faience+
       cinnamon-theme-glass
       cinnamon-theme-google+
-      cinnamon-theme-jelly-bean
       cinnamon-theme-lambda
       cinnamon-theme-loki
       cinnamon-theme-midnight
@@ -89,7 +87,6 @@ sub main {
       omg-suite
       delorean-dark-theme-3.6-g
       gtk-theme-gnome-cupertino
-      elegant-brit-gtk3-theme
       gtk3-theme-miui
       orta-gtk3-theme
       gtk-theme-plastiq
@@ -104,6 +101,7 @@ sub main {
       hexchat
       cinnamon-meta
     );
+    #cinnamon-theme-jelly-bean
     print
       "Beginning Manual Packages First\n", 
       "These require your input, changes etc to build.\n";
