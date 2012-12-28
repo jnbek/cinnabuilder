@@ -22,6 +22,7 @@ sub main {
     my @aur_fail     = qw();
     #Removed: cinnamon-applet-recent 
     my @manual_pkgs  = qw(
+      nemo-fm
       cinnamon-applet-windows7-menu
     );
     my @packages = qw(
@@ -29,7 +30,6 @@ sub main {
       gpaste-daemon
       ttf-roboto
       muffin-wm
-      nemo-fm
       cinnamon
       cinnamon-applet-better-places
       cinnamon-applet-better-settings
