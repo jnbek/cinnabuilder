@@ -39,6 +39,7 @@ sub main {
       cinnamon-applet-better-settings
       cinnamon-applet-brightness
       cinnamon-applet-classicmenu
+      cinnamon-applet-cpufreq
       cinnamon-applet-display-switcher
       cinnamon-applet-gpaste
       cinnamon-applet-hardware-monitor
@@ -93,6 +94,7 @@ sub main {
       gtk-theme-gnome-cupertino
       gtk3-theme-miui
       orta-gtk3-theme
+      gtk-theme-boje
       gtk-theme-plastiq
       insync
       hotot-data
