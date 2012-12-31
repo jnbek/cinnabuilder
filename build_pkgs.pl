@@ -29,6 +29,10 @@ sub main {
       disper
       gpaste-daemon
       ttf-roboto
+      libdbusmenu
+      libdbusmenu-gtk3
+      libindicator3
+      libappindicator3
       muffin-wm
       cinnamon
       cinnamon-applet-better-places
