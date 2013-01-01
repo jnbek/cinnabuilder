@@ -158,6 +158,14 @@ sub main {
             print "Moved: $db\n";
         }
     }
+    else {
+        chdir($export_dir);
+        # cinnamon-theme-glass-60-1-any.pkg.tar.xz
+        foreach my $tarball ( glob("*.pkg.tar.xz") ) {
+            rename $tarball, "$package_dir/$tarball";
+            print "Moved: $tarball\n";
+        }
+    }
     print "The following packages failed:\n";
     print Dumper( \@aur_fail );
 }
