@@ -107,6 +107,7 @@ sub main {
       orta-gtk3-theme
       gtk-theme-boje
       gtk-theme-plastiq
+      gtk-theme-metagrip
       insync
       hotot-data
       hotot-gtk3
