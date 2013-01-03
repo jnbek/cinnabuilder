@@ -50,8 +50,8 @@ sub main {
       cinnamon-applet-better-settings
       cinnamon-applet-brightness
       cinnamon-applet-classicmenu
-      cinnamon-applet-cpufreq
       cinnamon-applet-display-switcher
+      cinnamon-applet-gnome-menu
       cinnamon-applet-gpaste
       cinnamon-applet-hardware-monitor
       cinnamon-applet-iconized-window-list
