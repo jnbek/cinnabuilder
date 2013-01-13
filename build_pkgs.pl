@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use YAML;
 use Data::Dumper;
 use Getopt::Long;
 my $s = bless {}, __PACKAGE__;
@@ -33,117 +34,31 @@ sub main {
             mkdir $dir, 0755 || die "Could not create $dir: $!";
         }
     }
-    my $update_repos = system( "/usr/bin/yaourt -Syy" );
-    my @aur_fail = qw();
-    #Removed: cinnamon-applet-recent
-    my @manual_pkgs = qw(
-      nemo-fm
-      cinnamon-applet-windows7-menu
-    );
-    my @packages = qw(
-      disper
-      gpaste-daemon
-      ttf-roboto
-      libdbusmenu
-      libdbusmenu-gtk3
-      libindicator3
-      libappindicator3
-      muffin-wm
-      cinnamon
-      cinnamon-applet-better-places
-      cinnamon-applet-better-settings
-      cinnamon-applet-brightness
-      cinnamon-applet-classicmenu
-      cinnamon-applet-display-switcher
-      cinnamon-applet-gnome-menu
-      cinnamon-applet-gpaste
-      cinnamon-applet-hardware-monitor
-      cinnamon-applet-iconized-window-list
-      cinnamon-applet-informative-sound
-      cinnamon-applet-messaging-menu
-      cinnamon-applet-path-monitor
-      cinnamon-applet-places
-      cinnamon-applet-restart
-      cinnamon-applet-screenlocker
-      cinnamon-applet-screensaver-inhibit
-      cinnamon-applet-screenshot-record
-      cinnamon-applet-shutdown
-      cinnamon-applet-sysmenu
-      cinnamon-applet-system-monitor
-      cinnamon-applet-timer-with-notifications
-      cinnamon-applet-titlebar
-      cinnamon-applet-touchpad
-      cinnamon-applet-touchpad-classic
-      cinnamon-applet-usermenu
-      cinnamon-applet-vbox-launcher
-      cinnamon-applet-weather
-      cinnamon-applet-window-buttons
-      cinnamon-applet-windows-preview
-      cinnamon-extension-cinnadock
-      cinnamon-extension-coverflow-alt-tab
-      cinnamon-extension-desktop-scroller
-      cinnamon-extension-maximus-cinnamon
-      cinnamon-extension-temp
-      cinnamon-extension-win7-alt-tab
-      cinnamon-theme-ambiance
-      cinnamon-theme-baldr
-      cinnamon-theme-cinnamint
-      cinnamon-theme-eleganse
-      cinnamon-theme-elementary-luna
-      cinnamon-theme-faience
-      cinnamon-theme-faience+
-      cinnamon-theme-glass
-      cinnamon-theme-google+
-      cinnamon-theme-lambda
-      cinnamon-theme-loki
-      cinnamon-theme-midnight
-      cinnamon-theme-minty
-      cinnamon-theme-minty-arch
-      cinnamon-theme-nadia
-      cinnamon-theme-nightlife
-      cinnamon-theme-void
-      cinnamon-theme-odin
-      omg-cinnamon-theme
-      omg-suite
-      delorean-dark-theme-3.6-g
-      gtk-theme-gnome-cupertino
-      gtk3-theme-miui
-      orta-gtk3-theme
-      gtk-theme-boje
-      gtk-theme-plastiq
-      gtk-theme-metagrip
-      insync
-      hotot-data
-      hotot-gtk3
-      perl-template-alloy
-      perl-cgi-ex
-      qbittorrent
-      rhythmbox-tray-icon
-      rhythmbox-equalizer-git
-      hexchat
-      cinnamon-meta
-    );
-    #cinnamon-theme-jelly-bean
+    my $update_repos = system("/usr/bin/yaourt -Syy");
+    my @aur_fail     = qw();
+    my $pkg_file     = "packages.yaml";
+    my $yaml         = do { local ( @ARGV, $/ ) = $pkg_file; <> };
+    my $pkgs         = Load($yaml);
     print
       "Beginning Manual Packages First\n",
       "These require your input, changes etc to build.\n";
 
-    foreach my $package (@manual_pkgs) {
+    foreach my $package ( @{ $pkgs->{'manual_pkgs'} } ) {
         my $current_aur   = $self->current_aur($package);
         my $current_local = $self->current_local($package);
         print "$package: AUR: $current_aur LOCAL: $current_local\n";
         next unless ( ($no_skip) || ( !$current_local || $current_aur gt $current_local ) );
-        my $return = system( "/usr/bin/yaourt -S $force --export $export_dir $package" );
+        my $return = system("/usr/bin/yaourt -S $force --export $export_dir $package");
         if ( $return != 0 ) {
             push @aur_fail, $package;
         }
     }
-    foreach my $package (@packages) {
+    foreach my $package ( @{ $pkgs->{'packages'} } ) {
         my $current_aur   = $self->current_aur($package);
         my $current_local = $self->current_local($package);
         print "$package: AUR: $current_aur LOCAL: $current_local\n";
         next unless ( $no_skip || ( !$current_local || $current_aur gt $current_local ) );
-        my $return = system( "/usr/bin/yaourt -S $force --export $export_dir --noconfirm $package" );
+        my $return = system("/usr/bin/yaourt -S $force --export $export_dir --noconfirm $package");
         if ( $return != 0 ) {
             push @aur_fail, $package;
         }
