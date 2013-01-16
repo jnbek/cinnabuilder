@@ -82,5 +82,6 @@ packages:
   - qbittorrent
   - rhythmbox-tray-icon
   - rhythmbox-equalizer-git
+  - skype4pidgin-svn-dbus
   - hexchat
   - cinnamon-meta
