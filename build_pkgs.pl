@@ -5,11 +5,14 @@ use warnings;
 use YAML;
 use Data::Dumper;
 use Getopt::Long;
+use FindBin;
 my $s = bless {}, __PACKAGE__;
+
 $s->main();
 
 sub main {
     my $self = shift;
+    my $base_path = $FindBin::RealBin;
     #--no_skip builds all the packages regardless of if they have an upgrade.
     my ( $no_skip, $help, $do_repo_add,$force ) = '';
     my $is_forced = ' '; # This is stupid!!
@@ -37,7 +40,7 @@ sub main {
     }
     my $update_repos = system("/usr/bin/yaourt -Syy");
     my @aur_fail     = qw();
-    my $pkg_file     = "packages.yaml";
+    my $pkg_file     = "$base_path/packages.yaml";
     my $yaml         = do { local ( @ARGV, $/ ) = $pkg_file; <> };
     my $pkgs         = Load($yaml);
     print
