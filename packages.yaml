@@ -79,6 +79,11 @@ packages:
   - hotot-gtk3
   - perl-template-alloy
   - perl-cgi-ex
+  - python2-nemo
+  - python-dulwich
+  - python2-pysvn
+  - rabbitvcs
+  - rabbitvcs-nemo
   - qbittorrent
   - rhythmbox-tray-icon
   - rhythmbox-equalizer-git
