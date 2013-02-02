@@ -10,8 +10,8 @@ packages:
   - libdbusmenu-gtk3
   - libindicator3
   - libappindicator3
-  - muffin-wm
-  - cinnamon
+  - muffin-git
+  - cinnamon-git
   - cinnamon-applet-better-places
   - cinnamon-applet-better-settings
   - cinnamon-applet-brightness
