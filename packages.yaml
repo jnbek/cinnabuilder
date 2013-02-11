@@ -45,14 +45,12 @@ packages:
   - cinnamon-extension-coverflow-alt-tab
   - cinnamon-extension-desktop-scroller
   - cinnamon-extension-maximus-cinnamon
-  - cinnamon-extension-temp
   - cinnamon-extension-win7-alt-tab
   - cinnamon-theme-ambiance
   - cinnamon-theme-baldr
   - cinnamon-theme-cinnamint
   - cinnamon-theme-eleganse
   - cinnamon-theme-elementary-luna
-  - cinnamon-theme-faience
   - cinnamon-theme-faience+
   - cinnamon-theme-glass
   - cinnamon-theme-google+
@@ -88,5 +86,6 @@ packages:
   - rhythmbox-tray-icon
   - rhythmbox-equalizer-git
   - skype4pidgin-svn-dbus
+  - ipmitool  
   - hexchat
   - cinnamon-meta
