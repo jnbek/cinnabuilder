@@ -1,6 +1,6 @@
 ---
 manual_pkgs:
-  - nemo-fm
+  - nemo-git
   - cinnamon-applet-windows7-menu
 packages:
   - disper
@@ -67,7 +67,6 @@ packages:
   - omg-suite
   - delorean-dark-theme-3.6-g
   - gtk-theme-gnome-cupertino
-  - gtk3-theme-miui
   - orta-gtk3-theme
   - gtk-theme-boje
   - gtk-theme-plastiq
