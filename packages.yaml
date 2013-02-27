@@ -1,6 +1,8 @@
 ---
 manual_pkgs:
   - nemo-git
+  - hotot-data-git
+  - hotot-gtk3-git
   - cinnamon-applet-windows7-menu
 packages:
   - disper
@@ -68,12 +70,9 @@ packages:
   - delorean-dark-theme-3.6-g
   - gtk-theme-gnome-cupertino
   - orta-gtk3-theme
-  - gtk-theme-boje
   - gtk-theme-plastiq
   - gtk-theme-metagrip
   - insync
-  - hotot-data
-  - hotot-gtk3
   - perl-template-alloy
   - perl-cgi-ex
   - python2-nemo
@@ -81,7 +80,7 @@ packages:
   - python2-pysvn
   - rabbitvcs
   - rabbitvcs-nemo
-  - qbittorrent
+  - qbittorrent-git
   - rhythmbox-tray-icon
   - rhythmbox-equalizer-git
   - skype4pidgin-svn-dbus
