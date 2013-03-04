@@ -80,6 +80,8 @@ packages:
   - python2-pysvn
   - rabbitvcs
   - rabbitvcs-nemo
+  - nemo-dropbox-git
+  - nemo-fileroller-git
   - qbittorrent-git
   - rhythmbox-tray-icon
   - rhythmbox-equalizer-git
