@@ -1,8 +1,8 @@
 ---
 manual_pkgs:
   - nemo-git
-  - hotot-data-git
-  - hotot-gtk3-git
+  - hotot-data
+  - hotot-gtk3
   - cinnamon-applet-windows7-menu
 packages:
   - disper
@@ -81,8 +81,7 @@ packages:
   - rabbitvcs
   - rabbitvcs-nemo
   - nemo-dropbox-git
-  - nemo-fileroller-git
-  - qbittorrent-git
+  - qbittorrent
   - rhythmbox-tray-icon
   - rhythmbox-equalizer-git
   - skype4pidgin-svn-dbus
