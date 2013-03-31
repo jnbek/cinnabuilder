@@ -13,6 +13,7 @@ packages:
   - libindicator3
   - libappindicator3
   - muffin-git
+  - cinnamon-control-center-git
   - cinnamon-git
   - cinnamon-applet-better-places
   - cinnamon-applet-better-settings
